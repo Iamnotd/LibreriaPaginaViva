@@ -15,7 +15,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-
         Connection conexion = Conexion.getInstancia().getConexion();
 
         if (conexion != null) {
@@ -23,7 +22,6 @@ public class Main extends Application {
         } else {
             System.out.println("No fue posible conectar con la base de datos.");
         }
-
 
         Label label = new Label("Librería Página Viva");
 
