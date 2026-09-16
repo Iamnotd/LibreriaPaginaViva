@@ -1,36 +1,29 @@
 package org.lpv.system;
 
-import java.sql.Connection;
+import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import org.lpv.util.Conexion;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
 
-        Connection conexion = Conexion.getInstancia().getConexion();
+        FXMLLoader loader = new FXMLLoader(
+                Main.class.getResource(
+                        "/org/lpv/view/login.fxml"
+                )
+        );
 
-        if (conexion != null) {
-            System.out.println("Base de datos conectada correctamente.");
-        } else {
-            System.out.println("No fue posible conectar con la base de datos.");
-        }
+        Scene scene = new Scene(loader.load());
 
-        Label label = new Label("Librería Página Viva");
-
-        StackPane root = new StackPane(label);
-
-        Scene scene = new Scene(root, 700, 450);
-
-        stage.setTitle("Librería Página Viva");
+        stage.setTitle("Librería Página Viva - Login");
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
         stage.show();
     }
 
