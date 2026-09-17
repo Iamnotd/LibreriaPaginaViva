@@ -18,12 +18,14 @@ public class DashboardAdminController {
     @FXML
     public void initialize() {
 
-        if (Sesion.haySesion()) {
-            lblUsuario.setText(
-                    "Bienvenido, "
-                    + Sesion.getUsuarioActual().getUsername()
-            );
+        if (!Sesion.tieneRol("admin")) {
+            return;
         }
+
+        lblUsuario.setText(
+                "Bienvenido, "
+                + Sesion.getUsuarioActual().getUsername()
+        );
     }
 
     @FXML
@@ -72,4 +74,3 @@ public class DashboardAdminController {
         stage.centerOnScreen();
     }
 }
-

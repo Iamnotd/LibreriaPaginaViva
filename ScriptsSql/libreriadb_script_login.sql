@@ -3,11 +3,11 @@ create table usuarios (
     id int auto_increment primary key,
     username varchar(50) not null unique,
     password_hash varchar(255) not null,
-    rol enum('admin', 'empleado', 'cajero') not null,
+    rol enum('admin', 'bodega', 'cajero') not null,
     activo boolean default true,
     fecha_creacion timestamp default current_timestamp
 );
- 
+
 -- procedimiento para registrar usuario
 delimiter //
 create procedure sp_registrar_usuario(
@@ -20,7 +20,7 @@ begin
     values (_username, _password_hash, _rol);
 end //
 delimiter ;
- 
+
 -- procedimiento para iniciar sesión
 delimiter //
 create procedure sp_iniciar_sesion(
@@ -37,13 +37,13 @@ begin
 end //
 delimiter ;
 
-call sp_registrar_usuario('Raguay',sha2('admin',256), 'admin'); 
-call sp_iniciar_sesion('Raguay',sha2('admin', 256)); 
+call sp_registrar_usuario('Derek', sha2('admin',256), 'admin'); 
+call sp_iniciar_sesion('Derek', sha2('admin', 256)); 
 
-call sp_registrar_usuario('Cajero',sha2('cajero',256), 'cajero'); 
-call sp_iniciar_sesion('Cajero',sha2('cajero', 256));  
+call sp_registrar_usuario('Cajero', sha2('cajero',256), 'cajero'); 
+call sp_iniciar_sesion('Cajero', sha2('cajero', 256));  
 
-call sp_registrar_usuario('Empleado',sha2('empleado',256), 'empleado'); 
-call sp_iniciar_sesion('Empleado',sha2('empleado', 256));   
+call sp_registrar_usuario('Bodega', sha2('bodega',256), 'bodega'); 
+call sp_iniciar_sesion('Bodega', sha2('bodega', 256));   
 
-select * from usuarios; 
+select * from usuarios;

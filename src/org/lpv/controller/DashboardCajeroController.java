@@ -18,12 +18,14 @@ public class DashboardCajeroController {
     @FXML
     public void initialize() {
 
-        if (Sesion.haySesion()) {
-            lblUsuario.setText(
-                    "Bienvenido, "
-                    + Sesion.getUsuarioActual().getUsername()
-            );
+        if (!Sesion.tieneRol("cajero")) {
+            return;
         }
+
+        lblUsuario.setText(
+                "Bienvenido, "
+                + Sesion.getUsuarioActual().getUsername()
+        );
     }
 
     @FXML
@@ -42,7 +44,10 @@ public class DashboardCajeroController {
         Stage stage =
                 (Stage) lblUsuario.getScene().getWindow();
 
-        stage.setTitle("Librería Página Viva - Login");
+        stage.setTitle(
+                "Librería Página Viva - Login"
+        );
+
         stage.setScene(scene);
         stage.centerOnScreen();
     }

@@ -26,10 +26,18 @@ public final class Sesion {
     }
 
     public static String getRol() {
+
         if (usuarioActual == null) {
             return null;
         }
 
         return usuarioActual.getRol();
+    }
+
+    public static boolean tieneRol(String rol) {
+
+        return haySesion()
+                && rol != null
+                && rol.equalsIgnoreCase(getRol());
     }
 }
