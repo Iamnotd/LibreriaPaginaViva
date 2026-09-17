@@ -1,0 +1,103 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.lpv.controller.DashboardUsuarioController"
+      spacing="15"
+      prefWidth="900"
+      prefHeight="600">
+
+    <padding>
+        <Insets top="25" right="30" bottom="25" left="30"/>
+    </padding>
+
+    <Label text="Gestión de Usuarios"
+           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="tablaUsuarios"
+               prefHeight="300">
+
+        <columns>
+
+            <TableColumn fx:id="colId"
+                         text="ID"
+                         prefWidth="60"/>
+
+            <TableColumn fx:id="colUsername"
+                         text="Usuario"
+                         prefWidth="200"/>
+
+            <TableColumn fx:id="colRol"
+                         text="Rol"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="colActivo"
+                         text="Estado"
+                         prefWidth="120"/>
+
+        </columns>
+
+    </TableView>
+
+    <Label text="Datos del usuario"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+
+        <VBox spacing="5">
+            <Label text="Usuario"/>
+            <TextField fx:id="txtUsername"
+                       promptText="Nombre de usuario"
+                       prefWidth="200"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Contraseña"/>
+            <PasswordField fx:id="txtPassword"
+                           promptText="Contraseña"
+                           prefWidth="200"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Rol"/>
+            <ComboBox fx:id="cmbRol"
+                      prefWidth="150"/>
+        </VBox>
+
+    </HBox>
+
+    <Label fx:id="lblMensaje"
+           wrapText="true"/>
+
+    <HBox spacing="10">
+
+        <Button text="Crear"
+                onAction="#crearUsuario"/>
+
+        <Button text="Actualizar"
+                onAction="#actualizarUsuario"/>
+
+        <Button text="Activar / Desactivar"
+                onAction="#cambiarEstado"/>
+
+        <Button text="Limpiar"
+                onAction="#limpiar"/>
+
+        <Button text="Regresar"
+                onAction="#regresar"/>
+
+    </HBox>
+
+</VBox>
+```
