@@ -31,6 +31,11 @@ public class DashboardAdminController {
     @FXML
     private void abrirGestionUsuarios() throws IOException {
 
+        if (!Sesion.tieneRol("admin")) {
+            regresarLogin();
+            return;
+        }
+
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
                         "/org/lpv/view/dashboardUsuario.fxml"
@@ -52,6 +57,11 @@ public class DashboardAdminController {
 
     @FXML
     private void cerrarSesion() throws IOException {
+
+        regresarLogin();
+    }
+
+    private void regresarLogin() throws IOException {
 
         Sesion.cerrarSesion();
 

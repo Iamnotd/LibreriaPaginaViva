@@ -31,6 +31,11 @@ public class DashboardCajeroController {
     @FXML
     private void cerrarSesion() throws IOException {
 
+        regresarLogin();
+    }
+
+    private void regresarLogin() throws IOException {
+
         Sesion.cerrarSesion();
 
         FXMLLoader loader = new FXMLLoader(
