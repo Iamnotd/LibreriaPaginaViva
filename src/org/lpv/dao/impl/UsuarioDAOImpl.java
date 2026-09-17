@@ -16,11 +16,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private final Connection conexion;
 
     public UsuarioDAOImpl() {
-        this.conexion = Conexion.getInstancia().getConexion();
+        this.conexion =
+                Conexion.getInstancia().getConexion();
     }
 
     @Override
-    public Usuario buscarPorUsername(String username) throws SQLException {
+    public Usuario buscarPorUsername(
+            String username
+    ) throws SQLException {
 
         String sql = """
                 SELECT
@@ -39,7 +42,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             statement.setString(1, username);
 
             try (ResultSet resultado =
-                     statement.executeQuery()) {
+                         statement.executeQuery()) {
 
                 if (resultado.next()) {
                     return convertirUsuario(resultado);
@@ -51,9 +54,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public List<Usuario> listar() throws SQLException {
+    public List<Usuario> listar()
+            throws SQLException {
 
-        List<Usuario> usuarios = new ArrayList<>();
+        List<Usuario> usuarios =
+                new ArrayList<>();
 
         String sql = """
                 SELECT
@@ -72,6 +77,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                      statement.executeQuery()) {
 
             while (resultado.next()) {
+
                 usuarios.add(
                         convertirUsuario(resultado)
                 );
@@ -82,12 +88,18 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public boolean crear(Usuario usuario)
-            throws SQLException {
+    public boolean crear(
+            Usuario usuario
+    ) throws SQLException {
 
         String sql = """
                 INSERT INTO usuarios
-                    (username, password_hash, rol, activo)
+                    (
+                        username,
+                        password_hash,
+                        rol,
+                        activo
+                    )
                 VALUES (?, ?, ?, ?)
                 """;
 
@@ -119,8 +131,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public boolean actualizar(Usuario usuario)
-            throws SQLException {
+    public boolean actualizar(
+            Usuario usuario
+    ) throws SQLException {
 
         String sql = """
                 UPDATE usuarios
@@ -174,6 +187,35 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             statement.setBoolean(1, activo);
             statement.setInt(2, id);
+
+            return statement.executeUpdate() > 0;
+        }
+    }
+
+    @Override
+    public boolean cambiarContrasena(
+            int id,
+            String passwordHash
+    ) throws SQLException {
+
+        String sql = """
+                UPDATE usuarios
+                SET password_hash = ?
+                WHERE id = ?
+                """;
+
+        try (PreparedStatement statement =
+                     conexion.prepareStatement(sql)) {
+
+            statement.setString(
+                    1,
+                    passwordHash
+            );
+
+            statement.setInt(
+                    2,
+                    id
+            );
 
             return statement.executeUpdate() > 0;
         }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="org.lpv.controller.CambioContrasenaController"
+    alignment="CENTER"
+    spacing="15"
+    prefWidth="500"
+    prefHeight="450">
+
+    <padding>
+        <Insets
+            top="30"
+            right="40"
+            bottom="30"
+            left="40"/>
+    </padding>
+
+    <Label
+        text="Cambiar contraseña"
+        style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <Label
+        text="Contraseña actual"/>
+
+    <PasswordField
+        fx:id="txtContrasenaActual"
+        promptText="Ingrese su contraseña actual"
+        maxWidth="300"/>
+
+    <Label
+        text="Nueva contraseña"/>
+
+    <PasswordField
+        fx:id="txtNuevaContrasena"
+        promptText="Ingrese su nueva contraseña"
+        maxWidth="300"/>
+
+    <Label
+        text="Confirmar nueva contraseña"/>
+
+    <PasswordField
+        fx:id="txtConfirmarContrasena"
+        promptText="Repita la nueva contraseña"
+        maxWidth="300"/>
+
+    <Label
+        fx:id="lblMensaje"
+        wrapText="true"
+        maxWidth="350"/>
+
+    <Button
+        text="Cambiar contraseña"
+        onAction="#cambiarContrasena"
+        prefWidth="200"/>
+
+    <Button
+        text="Limpiar"
+        onAction="#limpiar"
+        prefWidth="200"/>
+
+    <Button
+        text="Regresar"
+        onAction="#regresar"
+        prefWidth="200"/>
+
+</VBox>

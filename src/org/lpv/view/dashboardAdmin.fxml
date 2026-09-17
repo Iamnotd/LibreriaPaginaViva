@@ -31,5 +31,9 @@
     <Button text="Cerrar sesión"
             onAction="#cerrarSesion"
             prefWidth="200"/>
+    
+    <Button
+    text="Cambiar contraseña"
+    onAction="#abrirCambioContrasena"/>
 
 </VBox>

@@ -31,11 +31,6 @@ public class DashboardAdminController {
     @FXML
     private void abrirGestionUsuarios() throws IOException {
 
-        if (!Sesion.tieneRol("admin")) {
-            regresarLogin();
-            return;
-        }
-
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
                         "/org/lpv/view/dashboardUsuario.fxml"
@@ -56,12 +51,29 @@ public class DashboardAdminController {
     }
 
     @FXML
-    private void cerrarSesion() throws IOException {
+    private void abrirCambioContrasena() throws IOException {
 
-        regresarLogin();
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/lpv/view/cambioContrasena.fxml"
+                )
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        Stage stage =
+                (Stage) lblUsuario.getScene().getWindow();
+
+        stage.setTitle(
+                "Librería Página Viva - Cambiar contraseña"
+        );
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
-    private void regresarLogin() throws IOException {
+    @FXML
+    private void cerrarSesion() throws IOException {
 
         Sesion.cerrarSesion();
 

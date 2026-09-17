@@ -29,12 +29,29 @@ public class DashboardCajeroController {
     }
 
     @FXML
-    private void cerrarSesion() throws IOException {
+    private void abrirCambioContrasena() throws IOException {
 
-        regresarLogin();
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/lpv/view/cambioContrasena.fxml"
+                )
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        Stage stage =
+                (Stage) lblUsuario.getScene().getWindow();
+
+        stage.setTitle(
+                "Librería Página Viva - Cambiar contraseña"
+        );
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
-    private void regresarLogin() throws IOException {
+    @FXML
+    private void cerrarSesion() throws IOException {
 
         Sesion.cerrarSesion();
 

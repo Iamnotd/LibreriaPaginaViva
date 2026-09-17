@@ -14,5 +14,13 @@ public interface UsuarioDAO {
 
     boolean actualizar(Usuario usuario) throws SQLException;
 
-    boolean cambiarEstado(int id, boolean activo) throws SQLException;
+    boolean cambiarEstado(
+            int id,
+            boolean activo
+    ) throws SQLException;
+
+    boolean cambiarContrasena(
+            int id,
+            String passwordHash
+    ) throws SQLException;
 }
