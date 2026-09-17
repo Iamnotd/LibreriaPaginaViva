@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/system/Main.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/style/dashboardbodega.css</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/manager/AuthService.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/manager/Sesion.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/dashboardCajero.fxml</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/login.fxml</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/dashboardAdmin.fxml</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/style/dashboardadmin.css</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/dashboardBodega.fxml</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/style/login.css</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/view/style/dashboardcajero.css</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/controller/DashboardCajeroController.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/dao/impl/UsuarioDAOImpl.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/controller/LoginController.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/controller/DashboardAdminController.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/util/SecurityUtil.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/model/Rol.java</file>
+            <file>file:/C:/Dg/bim4/s5/LibreriaPaginaViva/src/org/lpv/controller/DashboardBodegaController.java</file>
+        </group>
+    </open-files>
+</project-private>
