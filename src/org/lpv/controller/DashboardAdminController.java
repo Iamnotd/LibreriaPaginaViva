@@ -27,6 +27,28 @@ public class DashboardAdminController {
     }
 
     @FXML
+    private void abrirGestionUsuarios() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/lpv/view/dashboardUsuario.fxml"
+                )
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        Stage stage =
+                (Stage) lblUsuario.getScene().getWindow();
+
+        stage.setTitle(
+                "Librería Página Viva - Gestión de Usuarios"
+        );
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
+    }
+
+    @FXML
     private void cerrarSesion() throws IOException {
 
         Sesion.cerrarSesion();
@@ -42,8 +64,12 @@ public class DashboardAdminController {
         Stage stage =
                 (Stage) lblUsuario.getScene().getWindow();
 
-        stage.setTitle("Librería Página Viva - Login");
+        stage.setTitle(
+                "Librería Página Viva - Login"
+        );
+
         stage.setScene(scene);
         stage.centerOnScreen();
     }
 }
+

@@ -24,7 +24,12 @@
 
     <Label text="Administración del sistema"/>
 
+    <Button text="Gestión de usuarios"
+            onAction="#abrirGestionUsuarios"
+            prefWidth="200"/>
+
     <Button text="Cerrar sesión"
-            onAction="#cerrarSesion"/>
+            onAction="#cerrarSesion"
+            prefWidth="200"/>
 
 </VBox>
