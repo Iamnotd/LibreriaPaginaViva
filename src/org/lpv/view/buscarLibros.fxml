@@ -4,21 +4,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0"
-            prefWidth="800.0"
+<AnchorPane prefHeight="600.0"
+            prefWidth="900.0"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.lpv.controller.BuscarLibrosController">
 
     <children>
 
-        <VBox spacing="20.0"
-              AnchorPane.topAnchor="30.0"
-              AnchorPane.leftAnchor="40.0"
-              AnchorPane.rightAnchor="40.0">
+        <VBox spacing="18.0"
+              AnchorPane.topAnchor="25.0"
+              AnchorPane.bottomAnchor="25.0"
+              AnchorPane.leftAnchor="35.0"
+              AnchorPane.rightAnchor="35.0">
 
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets top="10"
+                        right="10"
+                        bottom="10"
+                        left="10"/>
             </padding>
 
             <Label text="Búsqueda de libros"
@@ -33,8 +37,9 @@
                           promptText="Buscar por"/>
 
                 <TextField fx:id="txtBusqueda"
-                           prefWidth="400.0"
-                           promptText="Escribe tu búsqueda..."/>
+                           prefWidth="500.0"
+                           promptText="Escribe tu búsqueda..."
+                           onAction="#buscar"/>
 
                 <Button text="Buscar"
                         prefWidth="100.0"
@@ -44,6 +49,39 @@
 
             <Label fx:id="lblMensaje"
                    text=""/>
+
+            <TableView fx:id="tblLibros"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn fx:id="colIsbn"
+                                 text="ISBN"
+                                 prefWidth="120.0"/>
+
+                    <TableColumn fx:id="colTitulo"
+                                 text="Título"
+                                 prefWidth="250.0"/>
+
+                    <TableColumn fx:id="colPrecio"
+                                 text="Precio"
+                                 prefWidth="100.0"/>
+
+                    <TableColumn fx:id="colStock"
+                                 text="Stock"
+                                 prefWidth="80.0"/>
+
+                    <TableColumn fx:id="colEstado"
+                                 text="Estado"
+                                 prefWidth="100.0"/>
+
+                </columns>
+
+                <placeholder>
+                    <Label text="No hay libros para mostrar."/>
+                </placeholder>
+
+            </TableView>
 
         </VBox>
 
