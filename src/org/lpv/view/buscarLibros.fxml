@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0"
+            prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.lpv.controller.BuscarLibrosController">
+
+    <children>
+
+        <VBox spacing="20.0"
+              AnchorPane.topAnchor="30.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0">
+
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="Búsqueda de libros"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <Label text="Busca un libro por ISBN, título o autor."/>
+
+            <HBox spacing="10.0">
+
+                <ComboBox fx:id="cmbTipoBusqueda"
+                          prefWidth="150.0"
+                          promptText="Buscar por"/>
+
+                <TextField fx:id="txtBusqueda"
+                           prefWidth="400.0"
+                           promptText="Escribe tu búsqueda..."/>
+
+                <Button text="Buscar"
+                        prefWidth="100.0"
+                        onAction="#buscar"/>
+
+            </HBox>
+
+            <Label fx:id="lblMensaje"
+                   text=""/>
+
+        </VBox>
+
+    </children>
+
+</AnchorPane>
