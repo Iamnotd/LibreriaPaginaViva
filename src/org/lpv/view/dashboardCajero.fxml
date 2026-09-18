@@ -24,11 +24,13 @@
 
     <Label text="Ventas y atención al cliente"/>
 
+    <Button text="Buscar libros"
+            onAction="#abrirBuscarLibros"/>
+
+    <Button text="Cambiar contraseña"
+            onAction="#abrirCambioContrasena"/>
+
     <Button text="Cerrar sesión"
             onAction="#cerrarSesion"/>
-    
-    <Button
-    text="Cambiar contraseña"
-    onAction="#abrirCambioContrasena"/>
 
 </VBox>
