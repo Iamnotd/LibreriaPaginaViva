@@ -2,16 +2,17 @@ package org.lpv.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import org.lpv.model.Venta;
+import java.util.List;
+import org.lpv.model.DetalleVenta;
 
-public interface VentaDAO {
+public interface DetalleVentaDAO {
 
-    int registrarVenta(
-            Venta venta,
+    void registrarDetalle(
+            DetalleVenta detalle,
             Connection conexion
     ) throws SQLException;
 
-    Venta buscarPorId(
+    List<DetalleVenta> buscarPorVenta(
             int idVenta
     ) throws SQLException;
 }
