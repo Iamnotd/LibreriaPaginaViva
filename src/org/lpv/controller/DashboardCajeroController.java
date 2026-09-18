@@ -29,6 +29,28 @@ public class DashboardCajeroController {
     }
 
     @FXML
+    private void abrirBuscarLibros() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/lpv/view/buscarLibros.fxml"
+                )
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        Stage stage =
+                (Stage) lblUsuario.getScene().getWindow();
+
+        stage.setTitle(
+                "Librería Página Viva - Buscar libros"
+        );
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
+    }
+
+    @FXML
     private void abrirCambioContrasena() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(
