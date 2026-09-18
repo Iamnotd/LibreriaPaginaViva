@@ -32,7 +32,8 @@ public class LibroDAOImpl implements LibroDAO {
                 WHERE isbn = ?
                 """;
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (PreparedStatement ps =
+                conexion.prepareStatement(sql)) {
 
             ps.setString(1, isbn);
 
@@ -48,7 +49,9 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public List<Libro> buscarPorTitulo(String titulo) throws SQLException {
+    public List<Libro> buscarPorTitulo(
+            String titulo
+    ) throws SQLException {
 
         List<Libro> libros = new ArrayList<>();
 
@@ -61,7 +64,8 @@ public class LibroDAOImpl implements LibroDAO {
                 ORDER BY titulo
                 """;
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (PreparedStatement ps =
+                conexion.prepareStatement(sql)) {
 
             ps.setString(1, "%" + titulo + "%");
 
@@ -77,7 +81,9 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public List<Libro> buscarPorAutor(String autor) throws SQLException {
+    public List<Libro> buscarPorAutor(
+            String autor
+    ) throws SQLException {
 
         List<Libro> libros = new ArrayList<>();
 
@@ -108,7 +114,8 @@ public class LibroDAOImpl implements LibroDAO {
                 ORDER BY l.titulo
                 """;
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (PreparedStatement ps =
+                conexion.prepareStatement(sql)) {
 
             String busqueda = "%" + autor + "%";
 
@@ -127,14 +134,54 @@ public class LibroDAOImpl implements LibroDAO {
         return libros;
     }
 
-    private Libro mapearLibro(ResultSet rs) throws SQLException {
+    @Override
+    public void actualizarStock(
+            String isbn,
+            int cantidad,
+            Connection conexion
+    ) throws SQLException {
+
+        String sql = """
+                UPDATE libros
+                SET stock_actual = stock_actual - ?
+                WHERE isbn = ?
+                  AND stock_actual >= ?
+                """;
+
+        try (PreparedStatement ps =
+                conexion.prepareStatement(sql)) {
+
+            ps.setInt(1, cantidad);
+            ps.setString(2, isbn);
+            ps.setInt(3, cantidad);
+
+            int filas = ps.executeUpdate();
+
+            if (filas == 0) {
+                throw new SQLException(
+                        "No se pudo actualizar el stock del libro: "
+                        + isbn
+                );
+            }
+        }
+    }
+
+    private Libro mapearLibro(
+            ResultSet rs
+    ) throws SQLException {
 
         Libro libro = new Libro();
 
-        libro.setIsbn(rs.getString("isbn"));
-        libro.setTitulo(rs.getString("titulo"));
+        libro.setIsbn(
+                rs.getString("isbn")
+        );
 
-        Date fechaPublicacion = rs.getDate("fecha_publicacion");
+        libro.setTitulo(
+                rs.getString("titulo")
+        );
+
+        Date fechaPublicacion =
+                rs.getDate("fecha_publicacion");
 
         if (fechaPublicacion != null) {
             libro.setFechaPublicacion(
@@ -146,7 +193,8 @@ public class LibroDAOImpl implements LibroDAO {
                 rs.getBigDecimal("precio")
         );
 
-        int idCategoria = rs.getInt("id_categoria");
+        int idCategoria =
+                rs.getInt("id_categoria");
 
         if (rs.wasNull()) {
             libro.setIdCategoria(null);
