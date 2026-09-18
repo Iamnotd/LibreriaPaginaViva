@@ -10,4 +10,8 @@ public interface VentaDAO {
             Venta venta,
             Connection conexion
     ) throws SQLException;
+
+    Venta buscarPorId(
+            int idVenta
+    ) throws SQLException;
 }

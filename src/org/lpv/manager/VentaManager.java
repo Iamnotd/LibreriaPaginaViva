@@ -70,20 +70,61 @@ public class VentaManager {
                             conexion
                     );
 
-            // =========================================
-            // PRUEBA TEMPORAL DE ROLLBACK
-            // =========================================
-            throw new SQLException(
-                    "PRUEBA ROLLBACK"
-            );
-            // =========================================
+            for (CarritoItem item : carrito) {
+
+                BigDecimal precio =
+                        item.getLibro().getPrecio();
+
+                BigDecimal subtotal =
+                        precio.multiply(
+                                BigDecimal.valueOf(
+                                        item.getCantidad()
+                                )
+                        );
+
+                DetalleVenta detalle =
+                        new DetalleVenta();
+
+                detalle.setIdVenta(idVenta);
+
+                detalle.setIsbn(
+                        item.getLibro().getIsbn()
+                );
+
+                detalle.setCantidad(
+                        item.getCantidad()
+                );
+
+                detalle.setPrecioUnitario(
+                        precio
+                );
+
+                detalle.setSubtotal(
+                        subtotal
+                );
+
+                detalleVentaDAO.registrarDetalle(
+                        detalle,
+                        conexion
+                );
+
+                libroDAO.actualizarStock(
+                        item.getLibro().getIsbn(),
+                        item.getCantidad(),
+                        conexion
+                );
+            }
+
+            conexion.commit();
+
+            return idVenta;
 
         } catch (SQLException e) {
 
             try {
                 conexion.rollback();
             } catch (SQLException rollbackError) {
-                rollbackError.printStackTrace();
+                e.addSuppressed(rollbackError);
             }
 
             throw e;
