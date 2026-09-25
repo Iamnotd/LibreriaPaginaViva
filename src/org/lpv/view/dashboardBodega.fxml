@@ -28,6 +28,10 @@
             prefWidth="200"
             onAction="#abrirGestionLibros"/>
 
+    <Button text="Ingreso de inventario"
+            prefWidth="200"
+            onAction="#abrirIngresoInventario"/>
+
     <Button text="Cambiar contraseña"
             prefWidth="200"
             onAction="#abrirCambioContrasena"/>

@@ -13,17 +13,12 @@ import org.lpv.util.Conexion;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
 
-    private final Connection conexion;
-
     public UsuarioDAOImpl() {
-        this.conexion =
-                Conexion.getInstancia().getConexion();
     }
 
     @Override
-    public Usuario buscarPorUsername(
-            String username
-    ) throws SQLException {
+    public Usuario buscarPorUsername(String username)
+            throws SQLException {
 
         String sql = """
                 SELECT
@@ -36,13 +31,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 WHERE username = ?
                 """;
 
-        try (PreparedStatement statement =
-                     conexion.prepareStatement(sql)) {
+        try (Connection conexion = Conexion.getInstancia().conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
 
             statement.setString(1, username);
 
-            try (ResultSet resultado =
-                         statement.executeQuery()) {
+            try (ResultSet resultado = statement.executeQuery()) {
 
                 if (resultado.next()) {
                     return convertirUsuario(resultado);
@@ -57,8 +51,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     public List<Usuario> listar()
             throws SQLException {
 
-        List<Usuario> usuarios =
-                new ArrayList<>();
+        List<Usuario> usuarios = new ArrayList<>();
 
         String sql = """
                 SELECT
@@ -71,16 +64,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 ORDER BY id
                 """;
 
-        try (PreparedStatement statement =
-                     conexion.prepareStatement(sql);
-             ResultSet resultado =
-                     statement.executeQuery()) {
+        try (Connection conexion = Conexion.getInstancia().conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql);
+             ResultSet resultado = statement.executeQuery()) {
 
             while (resultado.next()) {
-
-                usuarios.add(
-                        convertirUsuario(resultado)
-                );
+                usuarios.add(convertirUsuario(resultado));
             }
         }
 
@@ -88,9 +77,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public boolean crear(
-            Usuario usuario
-    ) throws SQLException {
+    public boolean crear(Usuario usuario)
+            throws SQLException {
 
         String sql = """
                 INSERT INTO usuarios
@@ -103,8 +91,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 VALUES (?, ?, ?, ?)
                 """;
 
-        try (PreparedStatement statement =
-                     conexion.prepareStatement(sql)) {
+        try (Connection conexion = Conexion.getInstancia().conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
 
             statement.setString(
                     1,
@@ -131,9 +119,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public boolean actualizar(
-            Usuario usuario
-    ) throws SQLException {
+    public boolean actualizar(Usuario usuario)
+            throws SQLException {
 
         String sql = """
                 UPDATE usuarios
@@ -143,8 +130,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 WHERE id = ?
                 """;
 
-        try (PreparedStatement statement =
-                     conexion.prepareStatement(sql)) {
+        try (Connection conexion = Conexion.getInstancia().conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
 
             statement.setString(
                     1,
@@ -182,8 +169,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 WHERE id = ?
                 """;
 
-        try (PreparedStatement statement =
-                     conexion.prepareStatement(sql)) {
+        try (Connection conexion = Conexion.getInstancia().conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
 
             statement.setBoolean(1, activo);
             statement.setInt(2, id);
@@ -204,8 +191,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 WHERE id = ?
                 """;
 
-        try (PreparedStatement statement =
-                     conexion.prepareStatement(sql)) {
+        try (Connection conexion = Conexion.getInstancia().conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
 
             statement.setString(
                     1,

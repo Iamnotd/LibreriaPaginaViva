@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.lpv.controller.IngresoInventarioController"
+      alignment="TOP_CENTER"
+      spacing="15"
+      prefWidth="700"
+      prefHeight="550">
+
+    <padding>
+        <Insets top="30"
+                right="40"
+                bottom="30"
+                left="40"/>
+    </padding>
+
+    <Label text="Ingreso de inventario"
+           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+
+    <Label fx:id="lblUsuario"
+           text="Usuario"/>
+
+    <Label text="Registrar entrada de libros"
+           style="-fx-font-size: 16px;"/>
+
+    <VBox spacing="8"
+          maxWidth="450">
+
+        <Label text="ISBN *"/>
+
+        <TextField fx:id="txtIsbn"
+                   promptText="Ingrese el ISBN del libro"/>
+
+        <Label text="Cantidad *"/>
+
+        <TextField fx:id="txtCantidad"
+                   promptText="Ingrese la cantidad"/>
+
+        <Label text="NIT del proveedor"/>
+
+        <TextField fx:id="txtProveedor"
+                   promptText="Ingrese el NIT del proveedor"/>
+
+        <Label text="Observación"/>
+
+        <TextField fx:id="txtObservacion"
+                   promptText="Ingrese una observación"/>
+
+    </VBox>
+
+    <HBox spacing="15"
+          alignment="CENTER">
+
+        <Button text="Registrar ingreso"
+                prefWidth="180"
+                onAction="#registrarIngreso"/>
+
+        <Button text="Volver"
+                prefWidth="120"
+                onAction="#volver"/>
+
+    </HBox>
+
+</VBox>

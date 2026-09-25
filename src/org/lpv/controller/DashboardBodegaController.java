@@ -38,8 +38,7 @@ public class DashboardBodegaController {
                 )
         );
 
-        Scene scene =
-                new Scene(loader.load());
+        Scene scene = new Scene(loader.load());
 
         Stage stage =
                 (Stage) lblUsuario
@@ -48,6 +47,31 @@ public class DashboardBodegaController {
 
         stage.setTitle(
                 "Librería Página Viva - Gestión de libros"
+        );
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
+    }
+
+    @FXML
+    private void abrirIngresoInventario()
+            throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/lpv/view/ingresoInventario.fxml"
+                )
+        );
+
+        Scene scene = new Scene(loader.load());
+
+        Stage stage =
+                (Stage) lblUsuario
+                        .getScene()
+                        .getWindow();
+
+        stage.setTitle(
+                "Librería Página Viva - Ingreso de inventario"
         );
 
         stage.setScene(scene);
@@ -64,8 +88,7 @@ public class DashboardBodegaController {
                 )
         );
 
-        Scene scene =
-                new Scene(loader.load());
+        Scene scene = new Scene(loader.load());
 
         Stage stage =
                 (Stage) lblUsuario
@@ -92,8 +115,7 @@ public class DashboardBodegaController {
                 )
         );
 
-        Scene scene =
-                new Scene(loader.load());
+        Scene scene = new Scene(loader.load());
 
         Stage stage =
                 (Stage) lblUsuario
