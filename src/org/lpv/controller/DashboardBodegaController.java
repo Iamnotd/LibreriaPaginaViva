@@ -29,7 +29,34 @@ public class DashboardBodegaController {
     }
 
     @FXML
-    private void abrirCambioContrasena() throws IOException {
+    private void abrirGestionLibros()
+            throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/lpv/view/dashboardgestionLibros.fxml"
+                )
+        );
+
+        Scene scene =
+                new Scene(loader.load());
+
+        Stage stage =
+                (Stage) lblUsuario
+                        .getScene()
+                        .getWindow();
+
+        stage.setTitle(
+                "Librería Página Viva - Gestión de libros"
+        );
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
+    }
+
+    @FXML
+    private void abrirCambioContrasena()
+            throws IOException {
 
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
@@ -37,10 +64,13 @@ public class DashboardBodegaController {
                 )
         );
 
-        Scene scene = new Scene(loader.load());
+        Scene scene =
+                new Scene(loader.load());
 
         Stage stage =
-                (Stage) lblUsuario.getScene().getWindow();
+                (Stage) lblUsuario
+                        .getScene()
+                        .getWindow();
 
         stage.setTitle(
                 "Librería Página Viva - Cambiar contraseña"
@@ -51,7 +81,8 @@ public class DashboardBodegaController {
     }
 
     @FXML
-    private void cerrarSesion() throws IOException {
+    private void cerrarSesion()
+            throws IOException {
 
         Sesion.cerrarSesion();
 
@@ -61,10 +92,13 @@ public class DashboardBodegaController {
                 )
         );
 
-        Scene scene = new Scene(loader.load());
+        Scene scene =
+                new Scene(loader.load());
 
         Stage stage =
-                (Stage) lblUsuario.getScene().getWindow();
+                (Stage) lblUsuario
+                        .getScene()
+                        .getWindow();
 
         stage.setTitle(
                 "Librería Página Viva - Login"

@@ -12,8 +12,8 @@ public class Conexion {
     private static final String URL =
             "jdbc:mysql://localhost:3306/libreriadb_in4cm";
 
-    private static final String USUARIO = "IN4CM";
-    private static final String PASSWORD = "#NdimAM4";
+    private static final String USUARIO = "root";
+    private static final String PASSWORD = "Dkendry37.";
 
     private Conexion() {
         conectar();

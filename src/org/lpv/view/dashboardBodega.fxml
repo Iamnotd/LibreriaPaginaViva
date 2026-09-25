@@ -24,11 +24,16 @@
 
     <Label text="Gestión de catálogo e inventario"/>
 
+    <Button text="Gestionar libros"
+            prefWidth="200"
+            onAction="#abrirGestionLibros"/>
+
+    <Button text="Cambiar contraseña"
+            prefWidth="200"
+            onAction="#abrirCambioContrasena"/>
+
     <Button text="Cerrar sesión"
+            prefWidth="200"
             onAction="#cerrarSesion"/>
-    
-    <Button
-    text="Cambiar contraseña"
-    onAction="#abrirCambioContrasena"/>
 
 </VBox>
